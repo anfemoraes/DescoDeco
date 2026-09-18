@@ -9,10 +9,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "DescoDeco_autogen/timestamp" "custom" "DescoDeco_autogen/deps"
-  "/home/anfemoraes/Documentos/Projetos/DescoDeco/build/DescoDeco_autogen/mocs_compilation.cpp" "CMakeFiles/DescoDeco.dir/DescoDeco_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/DescoDeco_autogen/mocs_compilation.cpp.o.d"
-  "/home/anfemoraes/Documentos/Projetos/DescoDeco/src/MainWindow.cpp" "CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.o.d"
-  "/home/anfemoraes/Documentos/Projetos/DescoDeco/src/main.cpp" "CMakeFiles/DescoDeco.dir/src/main.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/src/main.cpp.o.d"
-  "" "DescoDeco" "gcc" "CMakeFiles/DescoDeco.dir/link.d"
+  "/workspaces/DescoDeco/build/DescoDeco_autogen/mocs_compilation.cpp" "CMakeFiles/DescoDeco.dir/DescoDeco_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/DescoDeco_autogen/mocs_compilation.cpp.o.d"
+  "/workspaces/DescoDeco/src/MainWindow.cpp" "CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.o.d"
+  "/workspaces/DescoDeco/src/ZipExtractor.cpp" "CMakeFiles/DescoDeco.dir/src/ZipExtractor.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/src/ZipExtractor.cpp.o.d"
+  "/workspaces/DescoDeco/src/main.cpp" "CMakeFiles/DescoDeco.dir/src/main.cpp.o" "gcc" "CMakeFiles/DescoDeco.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

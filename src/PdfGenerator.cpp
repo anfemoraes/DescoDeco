@@ -1,5 +1,6 @@
 #include "PdfGenerator.h"
 
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -8,16 +9,13 @@
 #include <QPageSize>
 #include <QPainter>
 #include <QPdfWriter>
+#include <QProcess>
 #include <QRegularExpression>
+#include <QStandardPaths>
+#include <QTemporaryDir>
 
 namespace
 {
-bool isTextFile(const QString &filePath)
-{
-    const QString extension = QFileInfo(filePath).suffix().toLower();
-    return extension == "txt";
-}
-
 bool isImageFile(const QString &filePath)
 {
     const QString extension = QFileInfo(filePath).suffix().toLower();
@@ -28,6 +26,20 @@ bool isPdfFile(const QString &filePath)
 {
     const QString extension = QFileInfo(filePath).suffix().toLower();
     return extension == "pdf";
+}
+
+QString findPdfUnite()
+{
+#ifdef Q_OS_WIN
+    const QString bundledPath = QCoreApplication::applicationDirPath()
+        + QDir::separator() + "pdfunite.exe";
+    if (QFileInfo::exists(bundledPath))
+    {
+        return bundledPath;
+    }
+#endif
+
+    return QStandardPaths::findExecutable("pdfunite");
 }
 
 QVector<QString> wrapText(const QString &text, const QFontMetrics &fontMetrics, qreal maxWidth)
@@ -177,17 +189,6 @@ void renderImageContent(QPdfWriter &writer, QPainter &painter, const QString &im
     );
 }
 
-void renderPdfInfoPage(QPdfWriter &writer, QPainter &painter, const QString &filePath)
-{
-    const QString fileName = QFileInfo(filePath).fileName();
-    const QString text =
-        "Arquivo PDF encontrado:\n\n"
-        + fileName + "\n\n"
-        + "O conteúdo deste PDF foi identificado pelo DescoDeco,\n"
-        + "mas a incorporação das páginas será implementada posteriormente.";
-
-    renderTextContent(writer, painter, text);
-}
 }
 
 bool PdfGenerator::generate(const QStringList &files, const QString &outputPath)
@@ -204,58 +205,104 @@ bool PdfGenerator::generate(const QStringList &files, const QString &outputPath)
         return false;
     }
 
-    QPdfWriter writer(outputPath);
-    writer.setPageSize(QPageSize(QPageSize::A4));
-    writer.setPageMargins(QMarginsF(20, 20, 20, 20));
-    writer.setResolution(300);
-
-    QPainter painter;
-    if (!painter.begin(&writer))
+    // Linux uses poppler-utils; Windows can bundle pdfunite.exe beside the app.
+    const QString pdfunitePath = findPdfUnite();
+    if (pdfunitePath.isEmpty())
     {
         return false;
     }
 
-    painter.setPen(Qt::black);
-    painter.setFont(QFont("Sans Serif", 11));
+    QTemporaryDir temporaryDirectory;
+    if (!temporaryDirectory.isValid())
+    {
+        return false;
+    }
 
-    bool firstFile = true;
+    QStringList pdfParts;
+    int partIndex = 0;
+
     for (const QString &filePath : files)
     {
-        if (!QFileInfo(filePath).exists())
+        const QFileInfo fileInfo(filePath);
+        if (!fileInfo.exists() || !fileInfo.isFile() || !fileInfo.isReadable())
+        {
+            return false;
+        }
+
+        const QString extension = fileInfo.suffix().toLower();
+        if (extension == "pdf")
+        {
+            pdfParts << fileInfo.absoluteFilePath();
+            continue;
+        }
+
+        if (extension != "txt" && !isImageFile(filePath))
         {
             continue;
         }
 
-        if (!firstFile)
-        {
-            writer.newPage();
-        }
-        firstFile = false;
+        const QString partPath = temporaryDirectory.path()
+            + QString("/part-%1.pdf").arg(partIndex++);
+        QPdfWriter writer(partPath);
+        writer.setPageSize(QPageSize(QPageSize::A4));
+        writer.setPageMargins(QMarginsF(20, 20, 20, 20));
+        writer.setResolution(300);
 
-        const QString extension = QFileInfo(filePath).suffix().toLower();
+        QPainter painter;
+        if (!painter.begin(&writer))
+        {
+            return false;
+        }
+
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Sans Serif", 11));
 
         if (extension == "txt")
         {
             QFile inputFile(filePath);
             if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
             {
-                continue;
+                painter.end();
+                return false;
             }
 
             const QString text = QString::fromUtf8(inputFile.readAll());
             inputFile.close();
             renderTextContent(writer, painter, text);
         }
-        else if (isImageFile(filePath))
+        else
         {
+            QImage image(filePath);
+            if (image.isNull())
+            {
+                painter.end();
+                return false;
+            }
+
             renderImageContent(writer, painter, filePath);
         }
-        else if (extension == "pdf")
-        {
-            renderPdfInfoPage(writer, painter, filePath);
-        }
+
+        painter.end();
+        pdfParts << partPath;
     }
 
-    painter.end();
-    return true;
+    if (pdfParts.isEmpty())
+    {
+        return false;
+    }
+
+    const QString mergedPath = temporaryDirectory.path() + "/merged.pdf";
+    QStringList arguments = pdfParts;
+    arguments << mergedPath;
+
+    QProcess mergeProcess;
+    mergeProcess.start(pdfunitePath, arguments);
+    if (!mergeProcess.waitForFinished() || mergeProcess.exitStatus() != QProcess::NormalExit
+        || mergeProcess.exitCode() != 0 || !QFileInfo::exists(mergedPath))
+    {
+        return false;
+    }
+
+    QFile::remove(outputPath);
+    return QFile::copy(mergedPath, outputPath);
 }

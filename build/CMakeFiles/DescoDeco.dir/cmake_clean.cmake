@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DescoDeco.dir/link.d"
   "CMakeFiles/DescoDeco_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/DescoDeco_autogen.dir/ParseCache.txt"
   "DescoDeco_autogen"

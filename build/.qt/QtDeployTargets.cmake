@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_DescoDeco_FILE /home/anfemoraes/Documentos/Projetos/DescoDeco/build/DescoDeco)
+set(__QT_DEPLOY_TARGET_DescoDeco_TYPE EXECUTABLE)

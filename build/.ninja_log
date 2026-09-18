@@ -1,0 +1,11 @@
+# ninja log v7
+13	1126	8114745956396649	DescoDeco_autogen/timestamp	d00ef83bb744a404
+13	1126	8114745956396649	DescoDeco_autogen/mocs_compilation.cpp	d00ef83bb744a404
+13	1126	8114745956396649	C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/DescoDeco_autogen/timestamp	d00ef83bb744a404
+13	1126	8114745956396649	C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/DescoDeco_autogen/mocs_compilation.cpp	d00ef83bb744a404
+1200	7605	8114745957885973	CMakeFiles/DescoDeco.dir/src/ZipExtractor.cpp.obj	8ee8eecd1659b38e
+1153	7713	8114745957404293	CMakeFiles/DescoDeco.dir/src/main.cpp.obj	6c145654c423ebbe
+1141	7751	8114745957292198	CMakeFiles/DescoDeco.dir/DescoDeco_autogen/mocs_compilation.cpp.obj	a4265e9067e48dea
+1166	8711	8114745957534284	CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.obj	a5657f512b48f463
+1179	9087	8114745957674290	CMakeFiles/DescoDeco.dir/src/PdfGenerator.cpp.obj	1c3c98d6d0fcfd41
+9087	9717	8114746036750888	DescoDeco.exe	ba2b160c87b3eb60

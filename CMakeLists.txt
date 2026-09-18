@@ -9,8 +9,29 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(LIBZIP REQUIRED libzip)
+
+set(LIBZIP_INCLUDE_DIRS "")
+set(LIBZIP_LIBRARIES "")
+
+find_package(libzip CONFIG QUIET)
+if (libzip_FOUND)
+    set(LIBZIP_LIBRARIES libzip::zip)
+else()
+    find_package(PkgConfig QUIET)
+    if (PkgConfig_FOUND)
+        pkg_check_modules(LIBZIP QUIET IMPORTED_TARGET libzip)
+        if (TARGET PkgConfig::LIBZIP)
+            set(LIBZIP_LIBRARIES PkgConfig::LIBZIP)
+        endif()
+    endif()
+endif()
+
+if (NOT LIBZIP_LIBRARIES)
+    message(FATAL_ERROR
+        "libzip não foi encontrado. Instale o libzip e configure o CMake antes de compilar.\n"
+        "No Windows, use MSYS2/ucrt64, vcpkg ou o instalador do Qt com libzip."
+    )
+endif()
 
 qt_standard_project_setup()
 

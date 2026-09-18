@@ -1,5 +1,5 @@
-/home/anfemoraes/Documentos/Projetos/DescoDeco/build/CMakeFiles/DescoDeco.dir
-/home/anfemoraes/Documentos/Projetos/DescoDeco/build/CMakeFiles/edit_cache.dir
-/home/anfemoraes/Documentos/Projetos/DescoDeco/build/CMakeFiles/rebuild_cache.dir
-/home/anfemoraes/Documentos/Projetos/DescoDeco/build/CMakeFiles/DescoDeco_autogen_timestamp_deps.dir
-/home/anfemoraes/Documentos/Projetos/DescoDeco/build/CMakeFiles/DescoDeco_autogen.dir
+C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/CMakeFiles/DescoDeco.dir
+C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/CMakeFiles/rebuild_cache.dir
+C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/CMakeFiles/DescoDeco_autogen_timestamp_deps.dir
+C:/Users/andre/OneDrive/Desktop/Projetos/DescoDeco/build/CMakeFiles/DescoDeco_autogen.dir

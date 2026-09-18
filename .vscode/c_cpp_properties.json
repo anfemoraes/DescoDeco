@@ -1,20 +1,24 @@
 {
     "configurations": [
         {
-            "name": "Linux",
-            "compilerPath": "/usr/bin/g++",
+            "name": "MSYS2 UCRT64",
+            "compilerPath": "C:/msys64/ucrt64/bin/c++.exe",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "includePath": [
                 "${workspaceFolder}/src",
-                "/usr/include/x86_64-linux-gnu/qt6",
-                "/usr/include/x86_64-linux-gnu/qt6/QtCore",
-                "/usr/include/x86_64-linux-gnu/qt6/QtWidgets"
+                "C:/msys64/ucrt64/include",
+                "C:/msys64/ucrt64/include/qt6",
+                "C:/msys64/ucrt64/include/qt6/QtCore",
+                "C:/msys64/ucrt64/include/qt6/QtGui",
+                "C:/msys64/ucrt64/include/qt6/QtWidgets"
             ],
             "defines": [
                 "QT_CORE_LIB",
                 "QT_GUI_LIB",
-                "QT_WIDGETS_LIB"
+                "QT_WIDGETS_LIB",
+                "UNICODE",
+                "_UNICODE"
             ]
         }
     ],

@@ -539,6 +539,8 @@
  /workspaces/DescoDeco/build/DescoDeco_autogen/moc_predefs.h
  /workspaces/DescoDeco/src/MainWindow.cpp
  /workspaces/DescoDeco/src/MainWindow.h
+ /workspaces/DescoDeco/src/PdfGenerator.cpp
+ /workspaces/DescoDeco/src/PdfGenerator.h
  /workspaces/DescoDeco/src/ZipExtractor.cpp
  /workspaces/DescoDeco/src/ZipExtractor.h
  /workspaces/DescoDeco/src/main.cpp

@@ -203,6 +203,30 @@ src/MainWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DescoDeco.dir/build.make CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.s
 .PHONY : src/MainWindow.cpp.s
 
+src/PdfGenerator.o: src/PdfGenerator.cpp.o
+.PHONY : src/PdfGenerator.o
+
+# target to build an object file
+src/PdfGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DescoDeco.dir/build.make CMakeFiles/DescoDeco.dir/src/PdfGenerator.cpp.o
+.PHONY : src/PdfGenerator.cpp.o
+
+src/PdfGenerator.i: src/PdfGenerator.cpp.i
+.PHONY : src/PdfGenerator.i
+
+# target to preprocess a source file
+src/PdfGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DescoDeco.dir/build.make CMakeFiles/DescoDeco.dir/src/PdfGenerator.cpp.i
+.PHONY : src/PdfGenerator.cpp.i
+
+src/PdfGenerator.s: src/PdfGenerator.cpp.s
+.PHONY : src/PdfGenerator.s
+
+# target to generate assembly for a file
+src/PdfGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DescoDeco.dir/build.make CMakeFiles/DescoDeco.dir/src/PdfGenerator.cpp.s
+.PHONY : src/PdfGenerator.cpp.s
+
 src/ZipExtractor.o: src/ZipExtractor.cpp.o
 .PHONY : src/ZipExtractor.o
 
@@ -268,6 +292,9 @@ help:
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"
+	@echo "... src/PdfGenerator.o"
+	@echo "... src/PdfGenerator.i"
+	@echo "... src/PdfGenerator.s"
 	@echo "... src/ZipExtractor.o"
 	@echo "... src/ZipExtractor.i"
 	@echo "... src/ZipExtractor.s"

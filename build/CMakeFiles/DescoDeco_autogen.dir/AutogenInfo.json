@@ -192,6 +192,12 @@
 			null
 		],
 		[
+			"/workspaces/DescoDeco/src/PdfGenerator.h",
+			"MU",
+			"UVLADIE3JM/moc_PdfGenerator.cpp",
+			null
+		],
+		[
 			"/workspaces/DescoDeco/src/ZipExtractor.h",
 			"MU",
 			"UVLADIE3JM/moc_ZipExtractor.cpp",
@@ -257,6 +263,7 @@
 	"SOURCES" : 
 	[
 		[ "/workspaces/DescoDeco/src/MainWindow.cpp", "MU", null ],
+		[ "/workspaces/DescoDeco/src/PdfGenerator.cpp", "MU", null ],
 		[ "/workspaces/DescoDeco/src/ZipExtractor.cpp", "MU", null ],
 		[ "/workspaces/DescoDeco/src/main.cpp", "MU", null ]
 	],

@@ -538,6 +538,8 @@ DescoDeco_autogen/timestamp: /usr/bin/cmake \
   DescoDeco_autogen/moc_predefs.h \
   /workspaces/DescoDeco/src/MainWindow.cpp \
   /workspaces/DescoDeco/src/MainWindow.h \
+  /workspaces/DescoDeco/src/PdfGenerator.cpp \
+  /workspaces/DescoDeco/src/PdfGenerator.h \
   /workspaces/DescoDeco/src/ZipExtractor.cpp \
   /workspaces/DescoDeco/src/ZipExtractor.h \
   /workspaces/DescoDeco/src/main.cpp
@@ -2511,6 +2513,8 @@ DescoDeco_autogen/UVLADIE3JM/moc_MainWindow.cpp:
 
 /usr/include/c++/13/bits/chrono.h:
 
+DescoDeco_autogen/mocs_compilation.cpp:
+
 /usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake:
 
 /usr/include/math.h:
@@ -2606,8 +2610,6 @@ DescoDeco_autogen/UVLADIE3JM/moc_MainWindow.cpp:
 /usr/include/c++/13/vector:
 
 /usr/include/c++/13/utility:
-
-DescoDeco_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/13/unordered_map:
 
@@ -2734,6 +2736,8 @@ DescoDeco_autogen/mocs_compilation.cpp:
 /usr/include/c++/13/ext/concurrence.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/workspaces/DescoDeco/src/PdfGenerator.h:
 
 /usr/include/stdio.h:
 
@@ -3336,6 +3340,8 @@ DescoDeco_autogen/moc_predefs.h:
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata_impl.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h:
+
+/workspaces/DescoDeco/src/PdfGenerator.cpp:
 
 /usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake:
 

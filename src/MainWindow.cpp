@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "PdfGenerator.h"
 #include "ZipExtractor.h"
 
 #include <QDir>
@@ -75,7 +76,7 @@ void MainWindow::selecionarArquivo()
 
     if (sucesso)
     {
-        QString arquivosExtraidos;
+        QStringList arquivosEncontrados;
         QDirIterator iterator(
             pastaDestino,
             QDir::Files,
@@ -84,25 +85,51 @@ void MainWindow::selecionarArquivo()
 
         while (iterator.hasNext())
         {
-            QString caminhoArquivo = iterator.next();
-            arquivosExtraidos += caminhoArquivo + "\n";
+            arquivosEncontrados << iterator.next();
         }
 
-        if (arquivosExtraidos.isEmpty())
+        if (arquivosEncontrados.isEmpty())
         {
             QMessageBox::information(
                 this,
                 "DescoDeco",
                 "Nenhum arquivo encontrado."
             );
+            return;
         }
-        else
+
+        QString arquivoPdf = QFileDialog::getSaveFileName(
+            this,
+            "Salvar PDF",
+            "DescoDeco.pdf",
+            "Arquivos PDF (*.pdf)"
+        );
+
+        if (arquivoPdf.isEmpty())
+        {
+            return;
+        }
+
+        PdfGenerator geradorPdf;
+        bool pdfGerado = geradorPdf.generate(
+            arquivosEncontrados,
+            arquivoPdf
+        );
+
+        if (pdfGerado)
         {
             QMessageBox::information(
                 this,
                 "DescoDeco",
-                "Arquivos extraídos:\n\n" +
-                arquivosExtraidos.trimmed()
+                "PDF gerado com sucesso!"
+            );
+        }
+        else
+        {
+            QMessageBox::critical(
+                this,
+                "Erro",
+                "Não foi possível gerar o PDF."
             );
         }
     }

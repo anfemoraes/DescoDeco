@@ -18,6 +18,8 @@ qt_add_executable(DescoDeco
     src/main.cpp
     src/MainWindow.cpp
     src/MainWindow.h
+    src/PdfGenerator.cpp
+    src/PdfGenerator.h
     src/ZipExtractor.cpp
     src/ZipExtractor.h
 )

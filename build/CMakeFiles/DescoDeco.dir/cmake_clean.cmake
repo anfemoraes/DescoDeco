@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/DescoDeco.dir/DescoDeco_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.o"
   "CMakeFiles/DescoDeco.dir/src/MainWindow.cpp.o.d"
+  "CMakeFiles/DescoDeco.dir/src/PdfGenerator.cpp.o"
+  "CMakeFiles/DescoDeco.dir/src/PdfGenerator.cpp.o.d"
   "CMakeFiles/DescoDeco.dir/src/ZipExtractor.cpp.o"
   "CMakeFiles/DescoDeco.dir/src/ZipExtractor.cpp.o.d"
   "CMakeFiles/DescoDeco.dir/src/main.cpp.o"
